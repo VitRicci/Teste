@@ -1,0 +1,273 @@
+/* Estilo Global */
+* { margin: 0; padding: 0; }
+
+/* Estilo do Corpo */
+body {
+
+    background-size: cover;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('/imagens/background/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.8; /* Altere este valor para ajustar a opacidade (0 = transparente, 1 = opaco) */
+    pointer-events: none;
+}
+
+/* Container do Formulario  */
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    background: #fff; /* mantém o fundo branco do formulário */
+}
+
+/* Estilização dos Títulos */
+h1, h2 {
+    color: #222;
+    text-align: center;
+}
+
+/* Estilo do Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo dos Inputs e Botões */
+input, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Estilo dos Botões */
+button {
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Efeitos ao passar o mouse sobre os botões */
+button:hover {
+    background-color: blueviolet;
+    color: pink;
+}
+
+#limparAgendamentos {
+    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    display: block;
+}
+/* Estilo da Lista de Agendamentos */
+ul {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Estilo dos Itens da Lista */
+li {
+    background: #e1ecf4;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Container para opção 'Outro' */
+.outroContainer {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+/* Estilo da Textarea para opção 'Outro' */
+#outroTexto {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    margin-top: 5px;
+    min-height: 32px;
+    max-height: 80px;
+}
+
+/* Estilo dos Inputs Inválidos */
+input:invalid:not(:focus), select:invalid:not(:focus), textarea:invalid:not(:focus) {
+    border: 2px solid red;
+    background: white;
+}
+
+/* Sliders laterais */
+.slider-left, .slider-right {
+    position: fixed;
+    top: 0;
+    width: 25vw;
+    height: 100vh;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Slider Esquerdo */
+.slider-left {
+    left: 0;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding-left: 10%;
+}
+
+/* Slider Direito */
+.slider-right {
+    right: 0;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding-left: 10%;
+}
+
+/* Animação do Slideshow */
+@keyframes slideImages {
+    0% {
+        background-image: url('/imagens/prat1.jpg');
+    }
+    10% {
+        background-image: url('/imagens/prat1.jpg');
+    }
+    20% {
+        background-image: url('/imagens/prat2.jpg');
+    }
+    30% {
+        background-image: url('/imagens/prat3.jpg');
+    }
+    40% {
+        background-image: url('/imagens/prat4.jpg');
+    }
+    50% {
+        background-img: url('/imagens/prat5.jpg')
+    }
+    60% {
+        background-img: url('/imagens/prat6.jpg')
+    }
+    70% {
+        background-img: url('/imagens/prat7.jpg')
+    }
+    80% {
+        background-img: url('/imagens/prat8.jpg')
+    }
+    90% {
+        background-img: url('/imagens/prat9.jpg')
+    }
+    100% {
+        background-img: url('/imagens/prat10.jpg')
+    }
+}
+
+
+/* Conteúdo acima do background */
+.container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilização do Titulo em h1 */
+.container h1 {
+    padding-bottom: 20px;
+}
+/* Estilização do Titulo em h2 */
+.container h2 {
+    padding-top: 20px;
+}
+
+/* Estilo do Texto de Agradecimento */
+.minha-visita-agradecimento {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+/* Estilo das Imagens do Slider */
+.slide-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Mantém proporção sem distorcer */
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    border-radius: 5%;
+    z-index: 1;
+
+}
+
+/* Estilo da Imagem Ativa */
+.slide-img.active {
+    opacity: 1; /* Ajuste a opacidade conforme desejar */
+    z-index: 2;
+    
+}
+
+/* Estilo do seletor de visitas para remover */
+#removerVisita {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 16px auto 0 auto;
+    border-radius: 6px;
+    border: 1px solid #b3c6e7;
+    font-size: 1rem;
+    background: #e1ecf4;
+    color: #222;
+    box-sizing: border-box;
+}
+
+/* Estilo do botão de remover visita */
+#removerAgendamento {
+    display: block;
+    width: 100%;
+    margin: 12px auto 0 auto;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Estilo do botão de remover agendamento */
+#removerAgendamento:hover {
+    background-color: #c0392b;
+}
+
+/* Estilo da confirmação da visita */
+.minha-visita-confirmacao {
+    color: #000000;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

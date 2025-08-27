@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendar Minha Visita</title>
+    <link rel="stylesheet" href="/html/css/style.css">
+</head>
+<body>
+
+    <div class="slider-left">
+        <img src="/imagens/prat1.jpg" class="slide-img active" alt="Pratica 1">
+        <img src="/imagens/prat2.jpg" class="slide-img" alt="Pratica 2">
+        <img src="/imagens/prat3.jpg" class="slide-img" alt="Pratica 3">
+        <img src="/imagens/prat4.jpg" class="slide-img" alt="Pratica 4">
+        <img src="/imagens/prat5.jpg" class="slide-img" alt="Pratica 5">
+    </div>
+    <div class="slider-right">
+        <img src="/imagens/prat6.jpg" class="slide-img active" alt="Pratica 2">
+        <img src="/imagens/prat7.jpg" class="slide-img" alt="Pratica 4">
+        <img src="/imagens/prat8.jpg" class="slide-img" alt="Pratica 5">
+        <img src="/imagens/prat9.jpg" class="slide-img" alt="Pratica 3">
+        <img src="/imagens/prat10.jpg" class="slide-img" alt="Pratica 1">
+    </div>
+
+    <div class="container">
+        <h1>Agende sua Visita ao Museu</h1>
+        <form id="agendamentoForm">
+            <input type="text" pattern="[a-zA-ZÀ-ÿ\s]+" title="Apenas letras são permitidas" id="nome" placeholder="Seu nome" required>
+            <input type="email" id="email" placeholder="Seu e-mail" required>
+            <label for="Escolaridade dos visitantes">Escolaridade dos visitantes:</label>
+            <select name="opcoes" id="opcoes" required>
+                <option value="" disabled selected>--Selecione--</option>
+                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                <option value="Ensino Médio">Ensino Médio</option>
+                <option value="Ensino Superior">Ensino Superior</option>
+                <option value="Pós-Graduação">Pós-Graduação</option>
+                <option value="Doutorado">Doutorado</option>
+                <option value="Outro">Outro</option>
+            </select>
+            <div id="outroContainer"></div>
+            <input type="number" id="numeroVisitantes" placeholder="Número de visitantes" required min="1" max="100">
+            <input type="text" id="cidade" placeholder="Sua cidade" required>
+            <input type="date" id="data" required>
+            <input type="time" id="horario" required>
+            <button type="submit">Agendar</button>
+        </form>
+        <div id="confirmacao" style="display:none; margin-top:20px;">
+            <h2 class="minha-visita-confirmacao">Visita agendada com sucesso!</h2>
+            <p class="minha-visita-agradecimento">Obrigado por agendar sua visita! <br> Nossa equipe entrará em contato com você em breve.</p>
+            <ul id="dadosAgendamento"></ul>
+        </div>
+    </div>
+    <script src="/html/scripts/agendarminhavisita.js"></script>
+</body>
+</html>

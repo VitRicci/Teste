@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById('limparAgendamentos').addEventListener('click', function() {
+    document.getElementById('limparAgendamentos').addEventListener('click', async function() {
         const senha = prompt("Digite a senha de administrador para limpar as visitas:");
-        if (senha === "MuseuAnat202502") { // Troque "suaSenhaAqui" pela senha que você quiser
+        if (await validarSenhaBackend(senha)) {
             localStorage.removeItem('agendamentos');
             carregarAgendamentos();
             alert("Visitas limpas com sucesso!");
@@ -116,9 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById('removerAgendamento').addEventListener('click', function() {
+    document.getElementById('removerAgendamento').addEventListener('click', async function() {
         const senha = prompt("Digite a senha de administrador para remover a visita:");
-        if (senha === "MuseuAnat202502") { // Senha do administrador
+        if (await validarSenhaBackend(senha)) {
             const removerSelect = document.getElementById('removerVisita');
             const idx = removerSelect.value;
             if (idx !== "") {

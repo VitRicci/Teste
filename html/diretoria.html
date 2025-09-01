@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento de Visitas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="slider-left">   <!--- Imagens do Slider Esquerdo --->
+        <img src="imagens/prat1.jpg" class="slide-img active" alt="Pratica 1">
+        <img src="imagens/prat2.jpg" class="slide-img" alt="Pratica 2">
+        <img src="imagens/prat3.jpg" class="slide-img" alt="Pratica 3">
+        <img src="imagens/prat4.jpg" class="slide-img" alt="Pratica 4">
+        <img src="imagens/prat5.jpg" class="slide-img" alt="Pratica 5">
+    </div>
+    <div class="slider-right">  <!--- Imagens do Slider Direito --->
+        <img src="imagens/prat6.jpg" class="slide-img active" alt="Pratica 2">
+        <img src="imagens/prat7.jpg" class="slide-img" alt="Pratica 4">
+        <img src="imagens/prat8.jpg" class="slide-img" alt="Pratica 5">
+        <img src="imagens/prat9.jpg" class="slide-img" alt="Pratica 3">
+        <img src="imagens/prat10.jpg" class="slide-img" alt="Pratica 1">
+    </div>
+
+    <div class="container"> <!--- Container Formulario --->
+        <h1>Agende sua Visita ao Museu</h1>
+        <form id="agendamentoForm"> <!--- Inicio do formulario --->
+            <input type="text" pattern="[a-zA-ZÀ-ÿ\s]+" title="Apenas letras são permitidas" id="nome" placeholder="Seu nome" required>
+            <input type="email" id="email" placeholder="Seu e-mail" required>
+            <label for="Escolaridade dos visitantes">Escolaridade dos visitantes:</label>
+            <select name="opcoes" id="opcoes" required> <!--- Opções de Escolaridade --->
+                <option value="" disabled selected>--Selecione--</option>
+                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                <option value="Ensino Médio">Ensino Médio</option>
+                <option value="Ensino Superior">Ensino Superior</option>
+                <option value="Pós-Graduação">Pós-Graduação</option>
+                <option value="Doutorado">Doutorado</option>
+                <option value="Outro">Outro</option>
+            </select> <!--- Fim Opções de Escolaridade --->
+            <div id="outroContainer"></div> <!--- Container para opção 'Outro' - manda para o js que cria verifica e cria uma textarea --->
+            <input type="number" id="numeroVisitantes" placeholder="Número de visitantes" required min="1" max="100">
+            <input type="text" id="cidade" placeholder="Sua cidade" required>
+            <input type="date" id="data" required>
+            <input type="time" id="horario" required> <!--- Fim do formulario --->
+            <button type="submit">Agendar</button> <!--- Botão para Agendar --->
+        </form>
+        <button id="limparAgendamentos" type="button">Limpar Visitas</button>
+        <h2>Visitas Agendadas</h2>
+        <ul id="listaAgendamentos"></ul>
+        <label for="removerVisita">Remover visita:</label>
+        <select id="removerVisita">
+            <option value="" disabled selected>--Selecione uma visita--</option>
+        </select>
+        <button id="removerAgendamento" type="button">Remover Selecionada</button>
+    </div>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

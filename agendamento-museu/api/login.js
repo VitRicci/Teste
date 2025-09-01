@@ -5,8 +5,6 @@ export default function handler(req, res) {
     }
 
     let body = req.body;
-
-    // Vercel pode enviar o body como string
     if (typeof body === 'string') {
         try {
             body = JSON.parse(body);
@@ -17,7 +15,6 @@ export default function handler(req, res) {
     }
 
     const { senha } = body;
-
     if (senha === 'MuseuAnat202502') {
         res.status(200).json({ autorizado: true });
     } else {

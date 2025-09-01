@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             const visitaId = req.query.visitaId;
             // Se no banco está como número:
             const presencas = await collection.find({ visitaId: parseInt(visitaId) }).toArray();
-            // Se no banco está como string, use:
+            // Se no banco está como string:
             // const presencas = await collection.find({ visitaId: visitaId }).toArray();
             res.status(200).json({ presencas });
             return;

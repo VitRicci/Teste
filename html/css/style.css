@@ -310,6 +310,32 @@ input:invalid:not(:focus), select:invalid:not(:focus), textarea:invalid:not(:foc
     margin-top: 10px;
 }
 
+/* Alinha os botões de remover presença à direita e no mesmo lugar */
+.ul-presenca {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.li-presenca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-remover-presenca {
+    background: #dc3545;
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+}
+
 /* Responsividade para mobile e tablets */
 @media (max-width: 900px) {
     body {

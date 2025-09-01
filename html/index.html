@@ -17,19 +17,6 @@
             <div id="erroSenha" style="color:red;margin-top:8px;"></div>
         </div>
     </div>
-    <script>
-        function mostrarSenha() {
-            document.getElementById('senhaDiretoria').style.display = 'block';
-        }
-        function verificarSenha() {
-            const senha = document.getElementById('inputSenha').value;
-            // Troque 'MuseuAnat202502' pela senha correta se necessário
-            if (senha === 'MuseuAnat202502') {
-                window.location.href = 'diretoria.html';
-            } else {
-                document.getElementById('erroSenha').textContent = 'Senha incorreta!';
-            }
-        }
-    </script>
+    <script src="scripts/senhaDiretoria.js"></script>
 </body>
 </html>

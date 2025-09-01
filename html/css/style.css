@@ -296,3 +296,45 @@ input:invalid:not(:focus), select:invalid:not(:focus), textarea:invalid:not(:foc
     font-weight: bold;
     letter-spacing: 1px;
 }
+
+/* Responsividade para mobile e tablets */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .container-home {
+        max-width: 98vw;
+        width: 98vw;
+        min-height: 100vh;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 24px 8px;
+    }
+    .home-btn {
+        width: 100%;
+        font-size: 1em;
+        padding: 14px 0;
+        margin: 10px 0;
+    }
+    #senhaDiretoria input[type="password"] {
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 1em;
+    }
+    /* Esconde sliders laterais em telas menores */
+    .slider-left,
+    .slider-right {
+        display: none !important;
+    }
+    /* Ajusta container do formulário */
+    .container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 16px 4px;
+    }
+}

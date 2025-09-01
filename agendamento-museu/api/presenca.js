@@ -20,7 +20,6 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         let body = req.body;
         if (typeof body === 'string') body = JSON.parse(body);
-        // Garante que visitaId é número
         body.visitaId = parseInt(body.visitaId);
         await collection.insertOne(body);
         res.status(200).json({ recebido: true });

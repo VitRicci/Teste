@@ -23,7 +23,6 @@ export default async function handler(req, res) {
         if (req.method === 'GET') {
             const visitaId = req.query.visitaId;
             const presencas = await collection.find({ visitaId: parseInt(visitaId) }).toArray();
-            res.setHeader('Access-Control-Allow-Origin', origin);
             res.status(200).json({ presencas });
             return;
         }

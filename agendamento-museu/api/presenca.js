@@ -20,16 +20,17 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         let body = req.body;
         if (typeof body === 'string') body = JSON.parse(body);
-        body.visitaId = parseInt(body.visitaId);
+        // POST
+        body.visitaId = Number(body.visitaId);
         await collection.insertOne(body);
         res.status(200).json({ recebido: true });
         return;
     }
 
     if (req.method === 'GET') {
-        const visitaId = req.query.visitaId;
-        // Busca por visitaId como número
-        const presencas = await collection.find({ visitaId: parseInt(visitaId) }).toArray();
+        const visitaId = Number(req.query.visitaId);
+        // GET
+        const presencas = await collection.find({ visitaId }).toArray();
         res.status(200).json({ presencas });
         return;
     }

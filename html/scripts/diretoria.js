@@ -17,7 +17,7 @@ async function marcarPresencaBackend(idx) {
     const presenca = {
         responsavel: nomeResp,
         status: podeComparecer ? 'Confirmado' : 'Não pode comparecer',
-        visitaId: idx // Use um identificador único se possível
+        visitaId: idx // idx deve ser igual ao que o GET busca
     };
 
     try {

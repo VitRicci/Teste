@@ -34,6 +34,7 @@ function carregarVisitasDiretoria() {
         li.textContent = `${visita.nome} - ${visita.data} ${visita.horario}`;
         const btnPresenca = document.createElement('button');
         btnPresenca.textContent = 'Marcar presença';
+        btnPresenca.className = 'btn-presenca';
         btnPresenca.onclick = () => marcarPresencaBackend(idx);
         li.appendChild(btnPresenca);
         lista.appendChild(li);

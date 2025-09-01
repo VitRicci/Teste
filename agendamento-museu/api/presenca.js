@@ -24,5 +24,19 @@ export default async function handler(req, res) {
         return;
     }
 
+    if (req.method === 'POST') {
+        const novaPresenca = req.body;
+        await collection.insertOne(novaPresenca);
+        res.status(201).json({ message: 'Presença registrada com sucesso' });
+        return;
+    }
+
+    if (req.method === 'DELETE') {
+        const { id } = req.body;
+        await collection.deleteOne({ _id: new MongoClient.ObjectId(id) });
+        res.status(200).json({ message: 'Presença removida com sucesso' });
+        return;
+    }
+
     res.status(405).json({ error: 'Método não permitido' });
 }

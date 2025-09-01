@@ -2,14 +2,15 @@
   "name": "agendamento-museu",
   "version": "1.0.0",
   "description": "A scheduling system for museum visits.",
-  "main": "src/app.ts",
+  "main": "api/index.js",
   "scripts": {
     "start": "ts-node src/app.ts",
     "build": "tsc",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
+    "serverless-http": "^3.0.0",
     "typescript": "^4.5.4",
     "ts-node": "^10.4.0"
   },

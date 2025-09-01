@@ -5,7 +5,7 @@ const client = new MongoClient(uri);
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') {
@@ -13,32 +13,36 @@ export default async function handler(req, res) {
         return;
     }
 
-    if (req.method !== 'POST') {
-        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
-        res.status(405).json({ error: 'Método não permitido' });
+    await client.connect();
+    const db = client.db('projetomuseu');
+    const collection = db.collection('presencas');
+
+    if (req.method === 'POST') {
+        // Salvar presença
+        let body = req.body;
+        if (typeof body === 'string') body = JSON.parse(body);
+        await collection.insertOne(body);
+        res.status(200).json({ recebido: true });
         return;
     }
 
-    let body = req.body;
-    if (typeof body === 'string') {
-        try {
-            body = JSON.parse(body);
-        } catch {
-            res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
-            res.status(400).json({ error: 'Body inválido' });
-            return;
-        }
+    if (req.method === 'GET') {
+        // Listar presenças por visitaId
+        const visitaId = req.query.visitaId;
+        const presencas = await collection.find({ visitaId: parseInt(visitaId) }).toArray();
+        res.status(200).json({ presencas });
+        return;
     }
 
-    try {
-        await client.connect();
-        const db = client.db('projetomuseu');
-        const collection = db.collection('presencas');
-        await collection.insertOne(body);
-        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
-        res.status(200).json({ recebido: true });
-    } catch (error) {
-        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
-        res.status(500).json({ error: 'Erro ao salvar no banco de dados.' });
+    if (req.method === 'DELETE') {
+        // Remover presença por visitaId e responsavel
+        let body = req.body;
+        if (typeof body === 'string') body = JSON.parse(body);
+        const { visitaId, responsavel } = body;
+        const result = await collection.deleteOne({ visitaId: parseInt(visitaId), responsavel });
+        res.status(200).json({ removido: result.deletedCount > 0 });
+        return;
     }
+
+    res.status(405).json({ error: 'Método não permitido' });
 }

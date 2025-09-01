@@ -14,6 +14,7 @@ export default async function handler(req, res) {
     }
 
     if (req.method !== 'POST') {
+        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
         res.status(405).json({ error: 'Método não permitido' });
         return;
     }
@@ -23,6 +24,7 @@ export default async function handler(req, res) {
         try {
             body = JSON.parse(body);
         } catch {
+            res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
             res.status(400).json({ error: 'Body inválido' });
             return;
         }
@@ -33,8 +35,10 @@ export default async function handler(req, res) {
         const db = client.db('projetomuseu');
         const collection = db.collection('presencas');
         await collection.insertOne(body);
+        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
         res.status(200).json({ recebido: true });
     } catch (error) {
+        res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
         res.status(500).json({ error: 'Erro ao salvar no banco de dados.' });
     }
 }

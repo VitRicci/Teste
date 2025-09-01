@@ -74,7 +74,7 @@ async function carregarVisitasDiretoria() {
         btnPresenca.onclick = () => marcarPresencaBackend(idx);
         li.appendChild(btnPresenca);
 
-        // Lista de presenças
+        // Buscar e exibir presenças
         const presencas = await buscarPresencas(idx);
         if (presencas.length > 0) {
             const ulPresenca = document.createElement('ul');
@@ -82,14 +82,6 @@ async function carregarVisitasDiretoria() {
             presencas.forEach(p => {
                 const liP = document.createElement('li');
                 liP.textContent = `${p.responsavel} - ${p.status}`;
-
-                // Botão de remover presença
-                const btnRemover = document.createElement('button');
-                btnRemover.textContent = 'Remover presença';
-                btnRemover.style.marginLeft = '8px';
-                btnRemover.onclick = () => removerPresencaBackend(idx, p.responsavel);
-                liP.appendChild(btnRemover);
-
                 ulPresenca.appendChild(liP);
             });
             li.appendChild(ulPresenca);

@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Exemplo para validar senha no frontend (coloque em html/scripts/app.js ou html/scripts/senhaDiretoria.js)
 async function validarSenhaBackend(senha) {
     try {
         const res = await fetch('https://projetomuseu.vercel.app/api/login', {

@@ -1,3 +1,9 @@
+// ======== SENHAS DO SISTEMA ========
+const SENHAS = {
+    ADMIN: 'MuseuAnat202502',
+};
+// ======== FIM DAS SENHAS ===========
+
 export default function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', 'https://projetomuseu.netlify.app');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -24,7 +30,7 @@ export default function handler(req, res) {
     }
 
     const { senha } = body;
-    if (senha === 'MuseuAnat202502') {
+    if (senha === SENHAS.ADMIN) {
         res.status(200).json({ autorizado: true });
     } else {
         res.status(401).json({ autorizado: false, error: 'Senha incorreta' });

@@ -29,7 +29,12 @@ export default async function handler(req, res) {
         }
 
         if (req.method === 'POST') {
-            const novaPresenca = req.body;
+            const { nomeResp, podeComparecer, idx } = req.body;
+            const novaPresenca = {
+                responsavel: nomeResp,
+                status: podeComparecer ? 'Confirmado' : 'Não pode comparecer',
+                visitaId: idx // idx deve ser igual ao que o GET busca
+            };
             await collection.insertOne(novaPresenca);
             res.setHeader('Access-Control-Allow-Origin', origin);
             res.status(200).json({ recebido: true });

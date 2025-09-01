@@ -15,7 +15,7 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: url('/imagens/background/background.jpg') no-repeat center center fixed;
+    background: url('../imagens/background/background.jpg') no-repeat center center fixed;
     background-size: cover;
     opacity: 0.8; /* Altere este valor para ajustar a opacidade (0 = transparente, 1 = opaco) */
     pointer-events: none;

@@ -42,10 +42,11 @@ export default async function handler(req, res) {
         }
 
         if (req.method === 'DELETE') {
-            const { id } = req.body;
-            await collection.deleteOne({ _id: new MongoClient.ObjectId(id) });
-            res.setHeader('Access-Control-Allow-Origin', origin);
-            res.status(200).json({ removido: true });
+            let body = req.body;
+            if (typeof body === 'string') body = JSON.parse(body);
+            const { visitaId, responsavel } = body;
+            const result = await collection.deleteOne({ visitaId: parseInt(visitaId), responsavel });
+            res.status(200).json({ removido: result.deletedCount > 0 });
             return;
         }
 
